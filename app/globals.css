@@ -19,3 +19,18 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@layer utilities {
+  .font-header {
+    @apply font-larsseit font-medium text-[20px] leading-[24px] text-[#3B3345];
+  }
+
+  .font-subheader {
+    @apply font-larsseit font-normal text-[18px] leading-[22px] text-[#666768];
+  }
+
+  .font-question {
+    @apply font-larsseit text-[14px] font-normal leading-[20px] text-[#424B54] text-left;
+  }
+
+}
