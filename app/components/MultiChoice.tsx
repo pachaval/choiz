@@ -1,6 +1,7 @@
 "use client";
 
 import clsx from "clsx";
+import { motion } from "framer-motion";
 import { useFormStore } from "../store/useFormStore";
 import OtherInput from "./OtherInput";
 
@@ -26,7 +27,11 @@ const MultiChoice = ({
 
       <div className="w-full max-w flex flex-col items-center mt-5">
         {options.map((option) => (
-          <button
+          <motion.button
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
             key={option}
             className={clsx(
               "font-question w-full border p-3 rounded-lg mb-2",
@@ -37,7 +42,7 @@ const MultiChoice = ({
             onClick={() => setAnswer(step, option)}
           >
             {option}
-          </button>
+          </motion.button>
         ))}
       </div>
 
