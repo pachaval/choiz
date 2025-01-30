@@ -14,4 +14,8 @@
   .font-question {
     @apply font-larsseit text-[14px] font-normal leading-[20px] text-[#424B54] text-left;
   }
+
+  .shadow-box {
+    @apply shadow-[0px_1px_34px_0px_#10182814]
+  }
 }

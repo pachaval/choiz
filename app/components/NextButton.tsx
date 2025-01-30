@@ -1,10 +1,14 @@
 import clsx from "clsx";
-import { useFormStore } from "../hooks/useFormStore";
+import { useFormStore } from "../store/useFormStore";
 
 interface NextButtonProps {
   disabled?: boolean;
+  label?: string;
 }
-const NextButton = ({ disabled = false }: NextButtonProps) => {
+const NextButton = ({
+  disabled = false,
+  label = "Continuar",
+}: NextButtonProps) => {
   const { nextStep, step, answers } = useFormStore();
 
   const handleNext = () => {
@@ -23,7 +27,7 @@ const NextButton = ({ disabled = false }: NextButtonProps) => {
       onClick={handleNext}
       disabled={disabled}
     >
-      Continuar
+      {label}
     </button>
   );
 };

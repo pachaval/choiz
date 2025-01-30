@@ -2,9 +2,9 @@
 
 import WelcomeModal from "./WelcomeModal";
 import MultiChoice from "./MultiChoice";
-import { useFormStore } from "../hooks/useFormStore";
+import { useFormStore } from "../store/useFormStore";
 import { STEPS_DATA } from "../utils/constants";
-import Recommendation, { remedy } from "./Recommendation";
+import Recommendation from "./Recommendation";
 import NavBar from "./NavBar";
 import NextButton from "./NextButton";
 
@@ -20,10 +20,9 @@ const Stepper = () => {
 
   if (step === 6) {
     return (
-      <div className="bg-white min-h-screen flex flex-col justify-between items-center p-4">
+      <div className="bg-[#F9F9F9]  min-h-screen flex flex-col space-y-5 items-center p-4">
         <NavBar />
-        <Recommendation recommendation={remedy.DUTCAPS} />
-        <NextButton />
+        <Recommendation />
       </div>
     );
   }
