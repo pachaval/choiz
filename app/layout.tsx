@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   description: "Challenge realizado por Pablo Achaval",
-  title: "Pulppo Challenge",
+  title: "Choiz Challenge",
 };
 
 export default function RootLayout({
@@ -18,11 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        {/* <Header /> */}
-        <main className="flex-row items-center mx-20 my-10 mb-40">
-          {children}
-        </main>
-        {/* <Footer /> */}
+        <main className="flex-row items-center">{children}</main>
       </body>
     </html>
   );

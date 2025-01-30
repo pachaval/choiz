@@ -17,8 +17,7 @@ const MultiChoice = ({
   subheader = "",
   options,
 }: MultiChoiceProps) => {
-  const { answers, setAnswer, prevStep, setManualReason, manualReason } =
-    useFormStore();
+  const { answers, setAnswer, setManualReason, manualReason } = useFormStore();
 
   const isNextDisabled =
     !answers[step] ||
@@ -26,44 +25,44 @@ const MultiChoice = ({
     (step === 2 && answers[step]?.includes("Otro") && !manualReason.trim());
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center p-6">
-      <h2 className="font-header">{header}</h2>
-      <p className="font-subheader">{subheader}</p>
-      <div className="w-full max-w-sm">
-        {options.map((option) => (
-          <button
-            key={option}
-            className={clsx(
-              "font-question w-full border p-2 rounded-lg mb-2",
-              answers[step]?.includes(option)
-                ? "border-[#292929]"
-                : "border-[#E0E0E0]"
-            )}
-            onClick={() => setAnswer(step, option)}
-          >
-            {option}
-          </button>
-        ))}
-      </div>
-      {step === 2 && answers[step]?.includes("Otro") && (
-        <div className="w-full max-w-sm mt-4">
-          <input
-            type="text"
-            placeholder="Please specify"
-            value={manualReason}
-            onChange={(e) => setManualReason(e.target.value)}
-            className="w-full border p-2 rounded-lg"
-          />
+    <div className="bg-white min-h-screen flex flex-col justify-between items-center p-4">
+      <div className="text-left mb-4">
+        <h2 className="font-header text-xl font-bold">{header}</h2>
+        {subheader && <p className="font-subheader mb-8 mt-3">{subheader}</p>}
+
+        <div className="w-full max-w-sm flex flex-col items-center">
+          {options.map((option) => (
+            <button
+              key={option}
+              className={clsx(
+                "font-question w-full border p-3 rounded-lg mb-2",
+                answers[step]?.includes(option)
+                  ? "border-[#292929]"
+                  : "border-[#E0E0E0]"
+              )}
+              onClick={() => setAnswer(step, option)}
+            >
+              {option}
+            </button>
+          ))}
         </div>
-      )}
-      <div className="w-full max-w-sm flex justify-between mt-4">
-        {step > 1 && (
-          <button className="text-gray-500" onClick={prevStep}>
-            Back
-          </button>
+
+        {step === 2 && answers[step]?.includes("Otro") && (
+          <div className="w-full max-w-sm mt-4">
+            <p className="font-subheader mb-2 mt-3">
+              Cuéntanos cuál es el problema
+            </p>
+
+            <textarea
+              placeholder="Inserta tu respuesta aquí"
+              value={manualReason}
+              onChange={(e) => setManualReason(e.target.value)}
+              className="w-full border p-4 rounded-lg min-h-[15vh] font-subheader outline-none focus:ring-0"
+            />
+          </div>
         )}
-        <NextButton disabled={isNextDisabled} />
       </div>
+      <NextButton disabled={isNextDisabled} />
     </div>
   );
 };

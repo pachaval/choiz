@@ -49,3 +49,9 @@ export const STEPS_DATA = [
     ],
   },
 ];
+
+export const WELCOME_STEPS_DATA = [
+  { text: "Completa tu expediente médico", time: "2 min" },
+  { text: "Explora las opciones de tratamiento" },
+  { text: "Paga y recibe tu tratamiento" },
+];

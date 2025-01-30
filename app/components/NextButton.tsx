@@ -9,6 +9,7 @@ const NextButton = ({ disabled = false }: NextButtonProps) => {
 
   const handleNext = () => {
     if (step === 2 && answers[step]?.includes("Otro")) {
+      // ACA LA LOGICA DE AGREGAR EL TEXTO MANUAL DE OTRO
     }
     nextStep();
   };
