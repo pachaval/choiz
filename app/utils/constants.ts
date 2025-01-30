@@ -35,8 +35,7 @@ export const STEPS_DATA = [
   },
   {
     step: 5,
-    header:
-      "¿Tienes o has tenido alguna de las siguientes condiciones médicas?",
+    header: "¿Tienes o has tenido alguna de estas condiciones de salud mental?",
     subheader: "Selecciona todas las opciones que apliquen.",
     options: [
       "Depresión",
