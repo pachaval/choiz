@@ -3,6 +3,7 @@
 import clsx from "clsx";
 import { useFormStore } from "../hooks/useFormStore";
 import NextButton from "./NextButton";
+import OtherInput from "./OtherInput";
 
 type MultiChoiceProps = {
   step: number;
@@ -17,7 +18,7 @@ const MultiChoice = ({
   subheader = "",
   options,
 }: MultiChoiceProps) => {
-  const { answers, setAnswer, setManualReason, manualReason } = useFormStore();
+  const { answers, setAnswer, manualReason } = useFormStore();
 
   const isNextDisabled =
     !answers[step] ||
@@ -47,20 +48,7 @@ const MultiChoice = ({
           ))}
         </div>
 
-        {step === 2 && answers[step]?.includes("Otro") && (
-          <div className="w-full max-w-sm mt-4">
-            <p className="font-subheader mb-2 mt-3">
-              Cuéntanos cuál es el problema
-            </p>
-
-            <textarea
-              placeholder="Inserta tu respuesta aquí"
-              value={manualReason}
-              onChange={(e) => setManualReason(e.target.value)}
-              className="w-full border p-4 rounded-lg min-h-[15vh] font-subheader outline-none focus:ring-0"
-            />
-          </div>
-        )}
+        {step === 2 && answers[step]?.includes("Otro") && <OtherInput />}
       </div>
       <NextButton disabled={isNextDisabled} />
     </div>
