@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import { useFormStore } from "../hooks/useFormStore";
+import { useFormStore } from "../store/useFormStore";
 import OtherInput from "./OtherInput";
 
 type MultiChoiceProps = {
@@ -24,7 +24,7 @@ const MultiChoice = ({
       <h2 className="font-header text-xl font-bold mb-2">{header}</h2>
       {subheader && <p className="font-subheader">{subheader}</p>}
 
-      <div className="w-full max-w-sm flex flex-col items-center mt-5">
+      <div className="w-full max-w flex flex-col items-center mt-5">
         {options.map((option) => (
           <button
             key={option}

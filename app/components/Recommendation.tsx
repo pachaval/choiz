@@ -1,36 +1,21 @@
-"use-client";
+"use client";
 
-import { useFormStore } from "../hooks/useFormStore";
+import { useFormStore } from "../store/useFormStore";
+import MedicationBox from "./MedicationBox";
 
-export enum remedy {
-  DUTCAPS = "DUTAXIDIL CAPSULAS",
-  DUTGEL = "DUTAXIDIL GEL",
-  MINCAPS = "MINOXIDIL CAPSULAS",
-}
+const Recommendation = () => {
+  const { answers, recommendation } = useFormStore();
+  console.log({ recommendation });
 
-type RecommendationProps = {
-  recommendation: remedy;
-};
-
-const Recommendation = ({ recommendation }: RecommendationProps) => {
-  const { prevStep, answers } = useFormStore();
   console.log({ answers });
 
   return (
-    <>
-      <h2 className="text-xl font-semibold mb-4">
+    <div className="flex flex-col">
+      <h2 className="font-header mb-3">
         Tratamiento recomendado en base a tus respuestas
       </h2>
-      {/* METER ACA OTRO COMPONENTE QUE RECIBA 'RECOMMENDATION' Y ADENTRO HAGA UN
-      SWITCH CON CADA REMEDIO */}
-      <div className="w-full max-w-sm">REMEDIO {recommendation}</div>
-      <button className="text-gray-500" onClick={prevStep}>
-        Back
-      </button>
-      <div className="w-full max-w-sm flex justify-between mt-4">
-        METER ACA OTRO COMPONENTE FAQS
-      </div>
-    </>
+      <MedicationBox />
+    </div>
   );
 };
 

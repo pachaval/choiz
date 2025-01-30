@@ -54,3 +54,31 @@ export const WELCOME_STEPS_DATA = [
   { text: "Explora las opciones de tratamiento" },
   { text: "Paga y recibe tu tratamiento" },
 ];
+
+export const MEDICATIONS = {
+  DUTCAPS: "DUTAXIDIL CAPSULAS",
+  DUTGEL: "DUTAXIDIL GEL",
+  MINCAPS: "MINOXIDIL CAPSULAS",
+};
+
+export const MEDICATION_DETAIL = [
+  {
+    key: MEDICATIONS.DUTCAPS,
+    name: "DUTAXIDIL® Cápsulas",
+    specs: "Dutasterida 0.5 mg + Minoxidil 2.5 mg + Biotina 2.5 mg",
+    imgPath: "/assets/images/capsulas.png",
+  },
+  {
+    key: MEDICATIONS.DUTGEL,
+    name: "DUTAXIDIL® Gel",
+    specs:
+      "Dutasterida 0.1% + Minoxidil 5 % + Tretinoína 1% + Hidrocortisona 1%",
+    imgPath: "/assets/images/dutgel.png",
+  },
+  {
+    key: MEDICATIONS.MINCAPS,
+    name: "Minoxidil® Cápsulas",
+    specs: "Minoxidil 2.5 mg + Biotina 2.5 mg",
+    imgPath: "/assets/images/capsulas.png",
+  },
+];

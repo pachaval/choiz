@@ -7,7 +7,7 @@ const WelcomeModal = () => {
     <div className="fixed inset-0 flex flex-col">
       <div className="min-h-[60vh] overflow-hidden relative bg-[#6042AA]">
         <Image
-          src="/assets/welcome.jpeg"
+          src="/assets/images/welcome.jpeg"
           alt="Welcome Background"
           fill
           className="object-cover scale-[1.8] object-[center_-60px]"
@@ -17,7 +17,7 @@ const WelcomeModal = () => {
 
         <div className="absolute top-8 left-8 z-10">
           <Image
-            src="/choiz.svg"
+            src="assets/icons/choiz.svg"
             alt="Decorative Icon"
             width={87}
             height={87}

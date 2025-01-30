@@ -22,7 +22,7 @@ const StepsList = () => {
             {step.time && (
               <div className="ml-3 flex items-center text-gray-500 text-sm">
                 <Image
-                  src="/clock.svg"
+                  src="assets/icons/clock.svg"
                   alt="Clock"
                   width={13}
                   height={13}

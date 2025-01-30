@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { MEDICATIONS } from "../utils/constants";
 
 type FormState = {
   step: number;
@@ -43,7 +44,7 @@ export const useFormStore = create<FormState>((set) => ({
             },
             manualReason: "",
             recommendation:
-              step === 4 ? "remedy.DUTCAPS" : state.recommendation,
+              step === 4 ? MEDICATIONS.DUTCAPS : state.recommendation,
           };
         } else {
           const updatedAnswers = currentAnswers.filter(
@@ -57,11 +58,11 @@ export const useFormStore = create<FormState>((set) => ({
           let recommendation = state.recommendation;
           if (step === 4) {
             if (newAnswers.some((a) => a.includes("Cáncer"))) {
-              recommendation = "remedy.MINCAPS";
+              recommendation = MEDICATIONS.MINCAPS;
             } else if (newAnswers.some((a) => !a.startsWith("No"))) {
-              recommendation = "remedy.DUTGEL";
+              recommendation = MEDICATIONS.DUTGEL;
             } else {
-              recommendation = "remedy.DUTCAPS";
+              recommendation = MEDICATIONS.DUTCAPS;
             }
           }
 
