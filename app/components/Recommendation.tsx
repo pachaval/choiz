@@ -13,13 +13,11 @@ type RecommendationProps = {
 };
 
 const Recommendation = ({ recommendation }: RecommendationProps) => {
-  // de aca sacar la data para saber cual mostrar
   const { prevStep, answers } = useFormStore();
-
   console.log({ answers });
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center p-6">
+    <>
       <h2 className="text-xl font-semibold mb-4">
         Tratamiento recomendado en base a tus respuestas
       </h2>
@@ -32,7 +30,7 @@ const Recommendation = ({ recommendation }: RecommendationProps) => {
       <div className="w-full max-w-sm flex justify-between mt-4">
         METER ACA OTRO COMPONENTE FAQS
       </div>
-    </div>
+    </>
   );
 };
 

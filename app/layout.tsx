@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   description: "Challenge realizado por Pablo Achaval",
-  title: "Choiz Challenge",
+  title: "Choiz by Pablo Achaval",
 };
 
 export default function RootLayout({
