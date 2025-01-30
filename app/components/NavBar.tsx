@@ -11,21 +11,21 @@ const NavBar = () => {
     <div className="flex-col w-full ">
       <div className="w-full flex items-center justify-between py-4">
         <Image
-          src="/arrow.svg"
+          src="assets/icons/arrow.svg"
           alt="Decorative Icon"
           width={18}
           height={18}
           onClick={prevStep}
         />
         <Image
-          src="/choiz-black.svg"
+          src="assets/icons/choiz-black.svg"
           alt="Decorative Icon"
           width={70}
           height={70}
           className="icon-black"
         />
         <Image
-          src="/whatsapp.svg"
+          src="assets/icons/whatsapp.svg"
           alt="Decorative Icon"
           width={22}
           height={22}
