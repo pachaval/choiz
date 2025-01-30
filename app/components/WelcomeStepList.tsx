@@ -1,19 +1,14 @@
 import Image from "next/image";
+import { WELCOME_STEPS_DATA } from "../utils/constants";
 
 const StepsList = () => {
-  const steps = [
-    { text: "Completa tu expediente médico", time: "2 min" },
-    { text: "Explora las opciones de tratamiento" },
-    { text: "Paga y recibe tu tratamiento" },
-  ];
-
   return (
     <div className="flex flex-col">
-      {steps.map((step, index) => (
-        <div key={index} className="flex space-x-4 relative">
+      {WELCOME_STEPS_DATA.map((step, index) => (
+        <div key={index} className="flex space-x-2 relative">
           <div className="flex flex-col items-center">
             <div className="w-5 h-5 border-2 border-[#E0E0E0] bg-[#F9F9F9] rounded-full"></div>
-            {index < steps.length - 1 && (
+            {index < WELCOME_STEPS_DATA.length - 1 && (
               <div className="w-0.5 h-8 bg-[#E0E0E0]"></div>
             )}
           </div>

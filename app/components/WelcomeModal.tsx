@@ -25,7 +25,7 @@ const WelcomeModal = () => {
         </div>
       </div>
 
-      <div className="min-h-[45vh] bg-white rounded-t-3xl shadow-lg p-10 flex flex-col text-left animate-slide-up relative -mt-6">
+      <div className="min-h-[45vh] bg-white rounded-t-3xl shadow-lg p-7 flex flex-col text-left animate-slide-up relative -mt-6">
         <h2 className="text-[#6042AA] text-[26px] font-medium mb-3 mt-2">
           Bienvenido a Choiz
         </h2>
