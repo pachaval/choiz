@@ -4,7 +4,7 @@ import { useFormStore } from "../stores/useFormStore";
 const NavBar = () => {
   const { step, prevStep } = useFormStore();
 
-  const progressMap = [0, 18, 36, 54, 72, 90];
+  const progressMap = [0, 18, 36, 54, 72, 90, 100];
   const progressWidth = progressMap[step - 1] || 0;
 
   return (
