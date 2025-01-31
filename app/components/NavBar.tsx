@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useFormStore } from "../store/useFormStore";
+import { useFormStore } from "../stores/useFormStore";
 
 const NavBar = () => {
   const { step, prevStep } = useFormStore();

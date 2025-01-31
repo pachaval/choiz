@@ -3,15 +3,12 @@ import React from "react";
 import NextButton from "./NextButton";
 import { motion } from "framer-motion";
 
-import { useFormStore } from "../store/useFormStore";
+import { useFormStore } from "../stores/useFormStore";
 import { MEDICATION_DETAIL } from "../utils/constants";
 
 const MedicationBox = () => {
   const { recommendation } = useFormStore();
-  console.log({ recommendation });
   const medication = MEDICATION_DETAIL.find((med) => {
-    console.log("key", med.key);
-
     return med.key == recommendation;
   });
 

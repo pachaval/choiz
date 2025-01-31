@@ -1,4 +1,4 @@
-import { useFormStore } from "../store/useFormStore";
+import { useFormStore } from "../stores/useFormStore";
 
 const OtherInput = () => {
   const { setManualReason, manualReason } = useFormStore();
