@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { MEDICATIONS } from "../utils/constants";
+import { isOtroSelected } from "../utils/helpers";
 
 type FormState = {
   step: number;
@@ -18,7 +19,23 @@ export const useFormStore = create<FormState>((set) => ({
   answers: {},
   manualReason: "",
   recommendation: "",
-  nextStep: () => set((state) => ({ step: state.step + 1 })),
+  nextStep: () =>
+    set((state) => {
+      if (state.step === 2 && isOtroSelected(state.answers[2])) {
+        const updatedAnswers = state.answers[2].map((answer) =>
+          answer.startsWith("Otro") ? `Otro: ${state.manualReason}` : answer
+        );
+        return {
+          step: state.step + 1,
+          answers: {
+            ...state.answers,
+            2: updatedAnswers,
+          },
+        };
+      }
+
+      return { step: state.step + 1 };
+    }),
   prevStep: () => set((state) => ({ step: state.step - 1 })),
   setManualReason: (reason) => set({ manualReason: reason }),
   setRecommendation: (reco) => set({ recommendation: reco }),

@@ -6,6 +6,7 @@ import clsx from "clsx";
 import { useFormStore } from "../stores/useFormStore";
 import OtherInput from "./OtherInput";
 import Image from "next/image";
+import { isOtroSelected } from "../utils/helpers";
 
 const UnselectedIcon = () => (
   <Image
@@ -48,7 +49,10 @@ const MultiChoice = ({
 
       <div className="w-full max-w flex flex-col items-center mt-5">
         {options.map((option) => {
-          const isSelected = answers[step]?.includes(option);
+          const isSelected =
+            option === "Otro"
+              ? isOtroSelected(answers[step])
+              : answers[step]?.includes(option);
 
           return (
             <motion.button
@@ -71,7 +75,7 @@ const MultiChoice = ({
         })}
       </div>
 
-      {step === 2 && answers[step]?.includes("Otro") && <OtherInput />}
+      {step === 2 && isOtroSelected(answers[step]) && <OtherInput />}
     </div>
   );
 };
