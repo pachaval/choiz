@@ -1,8 +1,9 @@
 "use client";
 
-import clsx from "clsx";
 import { motion } from "framer-motion";
-import { useFormStore } from "../store/useFormStore";
+import clsx from "clsx";
+
+import { useFormStore } from "../stores/useFormStore";
 import OtherInput from "./OtherInput";
 
 type MultiChoiceProps = {

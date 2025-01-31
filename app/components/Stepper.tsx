@@ -1,14 +1,18 @@
 "use client";
 
-import WelcomeModal from "./WelcomeModal";
-import MultiChoice from "./MultiChoice";
-import { useFormStore } from "../store/useFormStore";
+import { useFormStore } from "../stores/useFormStore";
 import { STEPS_DATA } from "../utils/constants";
 import Recommendation from "./Recommendation";
-import NavBar from "./NavBar";
+import WelcomeModal from "./WelcomeModal";
+import MultiChoice from "./MultiChoice";
 import NextButton from "./NextButton";
+import { Faq } from "../types";
+import NavBar from "./NavBar";
 
-const Stepper = () => {
+interface StepperProps {
+  faqs: Faq[];
+}
+const Stepper = ({ faqs }: StepperProps) => {
   const { step, answers, manualReason } = useFormStore();
 
   const isNextDisabled =
@@ -22,7 +26,7 @@ const Stepper = () => {
     return (
       <div className="bg-[#F9F9F9]  min-h-screen flex flex-col space-y-5 items-center p-4">
         <NavBar />
-        <Recommendation />
+        <Recommendation faqs={faqs} />
       </div>
     );
   }

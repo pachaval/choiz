@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { useFormStore } from "../store/useFormStore";
+import { useFormStore } from "../stores/useFormStore";
 
 interface NextButtonProps {
   disabled?: boolean;
