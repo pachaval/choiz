@@ -1,44 +1,21 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import clsx from "clsx";
 
 import { useFormStore } from "../stores/useFormStore";
-import OtherInput from "./OtherInput";
-import Image from "next/image";
+import { ANIMATION, OTRO } from "../utils/constants";
 import { isOtroSelected } from "../utils/helpers";
+import { MultiChoiceProps } from "../types";
+import OtherInput from "./OtherInput";
 
-const UnselectedIcon = () => (
-  <Image
-    src="assets/icons/empty-circle.svg"
-    alt="Decorative Icon"
-    width={18}
-    height={18}
-  />
-);
-
-const SelectedIcon = () => (
-  <Image
-    src="assets/icons/checked.svg"
-    alt="Decorative Icon"
-    width={18}
-    height={18}
-  />
-);
-
-type MultiChoiceProps = {
-  step: number;
-  header: string;
-  subheader?: string;
-  options: string[];
-};
-
-const MultiChoice = ({
-  step,
-  header,
+const MultiChoice: React.FC<MultiChoiceProps> = ({
   subheader = "",
   options,
-}: MultiChoiceProps) => {
+  header,
+  step,
+}) => {
   const { answers, setAnswer } = useFormStore();
   const isStepWithIcon = [2, 4, 5].includes(step);
 
@@ -50,25 +27,39 @@ const MultiChoice = ({
       <div className="w-full max-w flex flex-col items-center mt-5">
         {options.map((option) => {
           const isSelected =
-            option === "Otro"
+            option === OTRO
               ? isOtroSelected(answers[step])
               : answers[step]?.includes(option);
 
           return (
             <motion.button
-              key={option}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
               className={clsx(
-                "font-question w-full border p-3 rounded-lg mb-2 flex items-center gap-2",
+                "option-button",
                 isSelected ? "border-[#292929]" : "border-[#E0E0E0]"
               )}
+              transition={{ duration: 0.3, ease: "easeOut" }}
               onClick={() => setAnswer(step, option)}
+              animate={ANIMATION.anmimate}
+              initial={ANIMATION.initial}
+              exit={ANIMATION.exit}
+              key={option}
             >
               {isStepWithIcon &&
-                (isSelected ? <SelectedIcon /> : <UnselectedIcon />)}
+                (isSelected ? (
+                  <Image
+                    src="assets/icons/checked.svg"
+                    alt="Selected Icon"
+                    width={18}
+                    height={18}
+                  />
+                ) : (
+                  <Image
+                    src="assets/icons/empty-circle.svg"
+                    alt="Unselected Icon"
+                    width={18}
+                    height={18}
+                  />
+                ))}
               {option}
             </motion.button>
           );

@@ -1,10 +1,10 @@
-import { Faq } from "../types";
-import Faqs from "./Faqs";
+import React from "react";
+
 import MedicationBox from "./MedicationBox";
-interface RecommendationProps {
-  faqs: Faq[];
-}
-const Recommendation = ({ faqs }: RecommendationProps) => {
+import { FaqsProps } from "../types";
+import Faqs from "./Faqs";
+
+const Recommendation: React.FC<FaqsProps> = ({ faqs }) => {
   return (
     <div className="flex flex-col">
       <h2 className="font-header mb-3">

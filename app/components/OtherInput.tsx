@@ -1,6 +1,8 @@
+import React from "react";
+
 import { useFormStore } from "../stores/useFormStore";
 
-const OtherInput = () => {
+const OtherInput: React.FC = () => {
   const { setManualReason, manualReason } = useFormStore();
 
   return (
@@ -8,10 +10,10 @@ const OtherInput = () => {
       <p className="font-subheader mb-2 mt-3">Cuéntanos cuál es el problema</p>
 
       <textarea
-        placeholder="Inserta tu respuesta aquí"
-        value={manualReason}
         onChange={(e) => setManualReason(e.target.value)}
-        className="w-full border p-4 rounded-lg min-h-[15vh] font-subheader outline-none focus:ring-0"
+        placeholder="Inserta tu respuesta aquí"
+        className="other-input"
+        value={manualReason}
       />
     </div>
   );

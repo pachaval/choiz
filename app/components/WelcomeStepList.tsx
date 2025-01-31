@@ -1,7 +1,9 @@
 import Image from "next/image";
+import React from "react";
+
 import { WELCOME_STEPS_DATA } from "../utils/constants";
 
-const StepsList = () => {
+const StepsList: React.FC = () => {
   return (
     <div className="flex flex-col">
       {WELCOME_STEPS_DATA.map((step, index) => (
@@ -23,10 +25,10 @@ const StepsList = () => {
               <div className="ml-3 flex items-center text-gray-500 text-sm">
                 <Image
                   src="assets/icons/clock.svg"
-                  alt="Clock"
-                  width={13}
-                  height={13}
                   className="mr-1"
+                  alt="Clock"
+                  height={13}
+                  width={13}
                 />
                 <span className="text-[#9F7CF7]">{step.time}</span>
               </div>

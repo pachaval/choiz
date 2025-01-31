@@ -1,29 +1,22 @@
 import { create } from "zustand";
-import { MEDICATIONS } from "../utils/constants";
-import { isOtroSelected } from "../utils/helpers";
 
-type FormState = {
-  step: number;
-  answers: Record<number, string[]>;
-  manualReason: string;
-  recommendation: string;
-  nextStep: () => void;
-  prevStep: () => void;
-  setAnswer: (step: number, answer: string) => void;
-  setManualReason: (reason: string) => void;
-  setRecommendation: (reco: string) => void;
-};
+import { MEDICATIONS, OTRO } from "../utils/constants";
+import { isOtroSelected } from "../utils/helpers";
+import { FormState } from "../types";
 
 export const useFormStore = create<FormState>((set) => ({
-  step: 1,
-  answers: {},
-  manualReason: "",
   recommendation: "",
+  manualReason: "",
+  answers: {},
+  step: 1,
+  prevStep: () => set((state) => ({ step: state.step - 1 })),
+  setManualReason: (reason) => set({ manualReason: reason }),
+  setRecommendation: (reco) => set({ recommendation: reco }),
   nextStep: () =>
     set((state) => {
       if (state.step === 2 && isOtroSelected(state.answers[2])) {
         const updatedAnswers = state.answers[2].map((answer) =>
-          answer.startsWith("Otro") ? `Otro: ${state.manualReason}` : answer
+          answer.startsWith(OTRO) ? `Otro: ${state.manualReason}` : answer
         );
         return {
           step: state.step + 1,
@@ -36,9 +29,6 @@ export const useFormStore = create<FormState>((set) => ({
 
       return { step: state.step + 1 };
     }),
-  prevStep: () => set((state) => ({ step: state.step - 1 })),
-  setManualReason: (reason) => set({ manualReason: reason }),
-  setRecommendation: (reco) => set({ recommendation: reco }),
   setAnswer: (step, answer) =>
     set((state) => {
       const currentAnswers = state.answers[step] || [];
@@ -68,9 +58,16 @@ export const useFormStore = create<FormState>((set) => ({
             (a) => !a.startsWith("No")
           );
 
-          const newAnswers = updatedAnswers.includes(answer)
-            ? updatedAnswers.filter((a) => a !== answer)
-            : [...updatedAnswers, answer];
+          let newAnswers;
+          if (answer === OTRO) {
+            newAnswers = isOtroSelected(updatedAnswers)
+              ? updatedAnswers.filter((item) => !item.startsWith(OTRO))
+              : [...updatedAnswers, answer];
+          } else {
+            newAnswers = updatedAnswers.includes(answer)
+              ? updatedAnswers.filter((a) => a !== answer)
+              : [...updatedAnswers, answer];
+          }
 
           let recommendation = state.recommendation;
           if (step === 4) {

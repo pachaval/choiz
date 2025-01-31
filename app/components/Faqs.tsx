@@ -1,11 +1,9 @@
-import Image from "next/image";
 import React, { useState } from "react";
-import { Faq } from "../types";
 import { motion } from "framer-motion";
 
-interface FaqsProps {
-  faqs: Faq[];
-}
+import { ANIMATION } from "../utils/constants";
+import { FaqsProps } from "../types";
+import Image from "next/image";
 
 const Faqs: React.FC<FaqsProps> = ({ faqs }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -15,13 +13,10 @@ const Faqs: React.FC<FaqsProps> = ({ faqs }) => {
   };
 
   return (
-    <div className="bg-white rounded-[36px] p-7 mt-6 flex flex-col shadow-box">
+    <div className="recommendation-container">
       {faqs.map((faq, index) => (
-        <div key={index} className="w-full flex-col ">
-          <button
-            onClick={() => toggleFaq(index)}
-            className="w-full flex justify-between items-center text-base text-[#3B3345] font-normal leading-[20px] text-left py-3"
-          >
+        <div key={index}>
+          <button onClick={() => toggleFaq(index)} className="faq-button">
             {faq.question}
             <Image
               src="assets/icons/chevron.svg"
@@ -32,11 +27,11 @@ const Faqs: React.FC<FaqsProps> = ({ faqs }) => {
           </button>
           {openIndex === index && (
             <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.1, ease: "easeOut" }}
               className="mt-2 mb-4 text-[#3B3345] text-sm leading-[20px]"
+              transition={ANIMATION.transition}
+              animate={ANIMATION.anmimate}
+              initial={ANIMATION.initial}
+              exit={ANIMATION.exit}
             >
               {faq.answer}
             </motion.div>

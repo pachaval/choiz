@@ -82,3 +82,14 @@ export const MEDICATION_DETAIL = [
     imgPath: "/assets/images/capsulas.png",
   },
 ];
+
+export const PROGRESS_MAP = [0, 18, 36, 54, 72, 90, 100];
+
+export const ANIMATION = {
+  initial: { opacity: 0, y: 10 },
+  anmimate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -10 },
+  transition: { duration: 0.1, ease: "easeOut" },
+};
+
+export const OTRO = "Otro";

@@ -1,4 +1,3 @@
-// La llamada de las respuestas la hago una vez y la cacheo
 export const fetchFaqs = async () => {
     let cachedFaqs = null;
     try {
