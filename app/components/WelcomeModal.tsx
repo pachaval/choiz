@@ -1,18 +1,20 @@
-import NextButton from "./NextButton";
 import Image from "next/image";
-import WelcomeStepList from "./WelcomeStepList";
+import React from "react";
 
-const WelcomeModal = () => {
+import WelcomeStepList from "./WelcomeStepList";
+import NextButton from "./NextButton";
+
+const WelcomeModal: React.FC = () => {
   return (
     <div className="fixed inset-0 flex flex-col">
-      <div className="min-h-[60vh] overflow-hidden relative bg-[#6042AA]">
+      <div className="welcome-bg">
         <Image
+          className="welcome-bg-img"
           src="/assets/images/welcome.jpeg"
           alt="Welcome Background"
-          fill
-          className="object-cover scale-[1.8] object-[center_-60px]"
-          priority
           quality={50}
+          priority
+          fill
         />
 
         <div className="absolute top-8 left-8 z-10">
@@ -25,7 +27,7 @@ const WelcomeModal = () => {
         </div>
       </div>
 
-      <div className="min-h-[45vh] bg-white rounded-t-3xl shadow-lg p-7 flex flex-col text-left animate-slide-up relative -mt-6">
+      <div className="welcome-bottomsheet">
         <h2 className="text-[#6042AA] text-[26px] font-medium mb-3 mt-2">
           Bienvenido a Choiz
         </h2>

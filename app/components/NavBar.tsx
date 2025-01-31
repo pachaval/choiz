@@ -1,40 +1,40 @@
 import Image from "next/image";
+
 import { useFormStore } from "../stores/useFormStore";
+import { PROGRESS_MAP } from "../utils/constants";
 
 const NavBar = () => {
   const { step, prevStep } = useFormStore();
-
-  const progressMap = [0, 18, 36, 54, 72, 90, 100];
-  const progressWidth = progressMap[step - 1] || 0;
+  const progressWidth = PROGRESS_MAP[step - 1];
 
   return (
-    <div className="flex-col w-full ">
-      <div className="w-full flex items-center justify-between py-4">
+    <div className="flex-col w-full">
+      <div className="navbar-container">
         <Image
           src="assets/icons/arrow.svg"
-          alt="Decorative Icon"
+          onClick={prevStep}
+          alt="Arrow Icon"
           width={18}
           height={18}
-          onClick={prevStep}
         />
         <Image
           src="assets/icons/choiz-black.svg"
-          alt="Decorative Icon"
+          className="icon-black"
+          alt="Choiz Icon"
           width={70}
           height={70}
-          className="icon-black"
         />
         <Image
           src="assets/icons/whatsapp.svg"
-          alt="Decorative Icon"
+          alt="Whatsapp Icon"
           width={22}
           height={22}
         />
       </div>
-      <div className="w-full bg-[#D3D3D3] rounded-full h-0.5 dark:bg-[#D3D3D3]">
+      <div className="progress-bar-container">
         <div
-          className="bg-[#6042AA] h-0.5 rounded-full dark:bg-[#6042AA] transition-all duration-300"
           style={{ width: `${progressWidth}%` }}
+          className="progress-bar"
         ></div>
       </div>
     </div>

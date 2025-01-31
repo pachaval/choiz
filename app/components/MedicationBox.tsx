@@ -1,42 +1,34 @@
+import { motion } from "framer-motion";
+import NextButton from "./NextButton";
 import Image from "next/image";
 import React from "react";
-import NextButton from "./NextButton";
-import { motion } from "framer-motion";
 
 import { useFormStore } from "../stores/useFormStore";
-import { MEDICATION_DETAIL } from "../utils/constants";
+import { getMedication } from "../utils/helpers";
+import { ANIMATION } from "../utils/constants";
 
-const MedicationBox = () => {
+const MedicationBox: React.FC = () => {
   const { recommendation } = useFormStore();
-  const medication = MEDICATION_DETAIL.find((med) => {
-    return med.key == recommendation;
-  });
+  const { name, specs, imgPath } = getMedication(recommendation);
 
-  const { name, specs, imgPath } = medication ?? {
-    name: "Unknown",
-    specs: "Unknown",
-    imgPath: "/assets/images/default.png",
-  };
   return (
-    <div className="bg-white rounded-[36px] p-7 flex flex-col shadow-box">
-      <p className="text-xl font-bold leading-[25px] text-left">{name}</p>
-      <p className="text-base text-[#7D7D7D] font-normal leading-[20px] text-left mb-4">
-        {specs}
-      </p>
+    <div className="recommendation-container">
+      <p className="recommendation-name">{name}</p>
+      <p className="recommendation-specs">{specs}</p>
       <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -10 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
+        animate={ANIMATION.anmimate}
+        initial={ANIMATION.initial}
+        exit={ANIMATION.exit}
       >
         <Image
-          src={imgPath}
-          alt="Welcome Background"
-          width={300}
-          height={200}
-          priority
-          quality={70}
           className="object-contain w-full h-[20vh] mt-3"
+          alt="Welcome Background"
+          src={imgPath}
+          quality={70}
+          height={200}
+          width={300}
+          priority
         />
       </motion.div>
       <NextButton label="Seleccionar" />

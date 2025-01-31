@@ -8,7 +8,6 @@ export async function GET() {
     }
 
     const faqs = await response.json();
-
     return new Response(JSON.stringify(faqs), {
       status: 200,
       headers: { "Content-Type": "application/json" },
