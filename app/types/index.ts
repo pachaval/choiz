@@ -20,6 +20,11 @@ export interface NextButtonProps {
   disabled?: boolean;
   label?: string;
 }
+
+export interface NavBarProps {
+  bgColor?: string;
+}
+
 export interface FaqsProps {
   faqs: Faq[];
 }

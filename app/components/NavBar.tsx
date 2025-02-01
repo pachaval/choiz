@@ -1,14 +1,16 @@
 import Image from "next/image";
+import React from "react";
 
 import { useFormStore } from "../stores/useFormStore";
 import { PROGRESS_MAP } from "../utils/constants";
+import { NavBarProps } from "../types";
 
-const NavBar = () => {
+const NavBar: React.FC<NavBarProps> = ({ bgColor = "white" }) => {
   const { step, prevStep } = useFormStore();
   const progressWidth = PROGRESS_MAP[step - 1];
 
   return (
-    <div className="fixed top-0 left-0 flex-col w-full p-3 bg-white">
+    <div className={`fixed top-0 left-0 flex-col w-full p-3 bg-${bgColor}`}>
       <div className="navbar-container">
         <Image
           src="assets/icons/arrow.svg"
