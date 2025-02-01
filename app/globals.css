@@ -59,10 +59,10 @@
 
   /* STEPPER */
   .render-multichoice {
-    @apply bg-white min-h-screen flex flex-col justify-between items-center p-4;
+    @apply bg-white min-h-screen flex flex-col justify-between items-center p-4 pt-16;
   }
   .render-layout {
-    @apply bg-[#F9F9F9] min-h-screen flex flex-col space-y-5 items-center p-4;
+    @apply bg-[#F9F9F9] min-h-screen flex flex-col space-y-5 items-center p-4 pt-16;
   }
 
   /* SUCCESS */
