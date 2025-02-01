@@ -1,3 +1,7 @@
+# APP 
+
+https://choiz-sigma.vercel.app/
+
 # Instrucciones para levantar el proyecto local
 
 **Requerimientos:** tener instalado Node y Git
@@ -8,4 +12,12 @@
 
 Alternativamente, ejecutar los comandos encadenados 'npm install && npm run build && npm run dev' en el script individualmente.
 
-**Observaciones:** 
+**Observaciones:**
+
+1 -> La pantalla de antecedentes no tiene boton de continuar en el Figma pero se lo agregue para ser congruentes con la experiencia.
+
+2 -> No respete exactamente el progreso de cada instancia del progress bar violeta ya que como esta en el figma, la subida no es proprocional, en cambio hice que progrese en partes iguales para mejorar la experiencia.
+
+3 -> El figma no mostraba el estado de boton deshabilitado asi que si el usuario no elije nada en un paso lo pinto de gris y lo inhabilito.
+
+4 -> Intente crear cada branch y commit atomicamente para separar cada feature, chore y fix
