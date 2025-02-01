@@ -37,7 +37,7 @@ const Stepper: React.FC<FaqsProps> = ({ faqs }) => {
 
   const renderLayout = (children: React.ReactNode) => (
     <div className="render-layout">
-      <NavBar />
+      <NavBar bgColor="[#F9F9F9]" />
       {children}
     </div>
   );
