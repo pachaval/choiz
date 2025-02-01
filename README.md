@@ -21,3 +21,5 @@ Alternativamente, ejecutar los comandos encadenados 'npm install && npm run buil
 3 -> El figma no mostraba el estado de boton deshabilitado asi que si el usuario no elije nada en un paso lo pinto de gris y lo inhabilito.
 
 4 -> Intente crear cada branch y commit atomicamente para separar cada feature, chore y fix
+
+5 -> Use **Zustand** para manejar el estado y la logica del form, **framer-motion** para animar divs e imagenes, **clsx** para algunas clases.
