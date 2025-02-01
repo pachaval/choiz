@@ -10,7 +10,9 @@ const NavBar: React.FC<NavBarProps> = ({ bgColor = "white" }) => {
   const progressWidth = PROGRESS_MAP[step - 1];
 
   return (
-    <div className={`fixed top-0 left-0 flex-col w-full p-3 bg-${bgColor}`}>
+    <div
+      className={`fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-sm px-4 py-3 z-10 bg-${bgColor}`}
+    >
       <div className="navbar-container">
         <Image
           src="assets/icons/arrow.svg"

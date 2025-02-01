@@ -1,5 +1,7 @@
 "use client";
 
+import React, { useEffect } from "react";
+
 import { useFormStore } from "../stores/useFormStore";
 import { OTRO, STEPS_DATA } from "../utils/constants";
 import Recommendation from "./Recommendation";
@@ -9,10 +11,13 @@ import NextButton from "./NextButton";
 import { FaqsProps } from "../types";
 import Success from "./Success";
 import NavBar from "./NavBar";
-import React from "react";
 
 const Stepper: React.FC<FaqsProps> = ({ faqs }) => {
   const { step, answers, manualReason } = useFormStore();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const isNextDisabled =
     !answers[step] ||
