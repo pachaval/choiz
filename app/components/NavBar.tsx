@@ -8,7 +8,7 @@ const NavBar = () => {
   const progressWidth = PROGRESS_MAP[step - 1];
 
   return (
-    <div className="flex-col w-full">
+    <div className="fixed top-0 left-0 flex-col w-full p-3 bg-white">
       <div className="navbar-container">
         <Image
           src="assets/icons/arrow.svg"
