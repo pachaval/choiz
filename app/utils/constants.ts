@@ -83,6 +83,22 @@ export const MEDICATION_DETAIL = [
   },
 ];
 
+export const STEPS = {
+  WELCOME: 1,
+  PROBLEMAS: 2,
+  ANTECEDENTES: 3,
+  CONDICIONES: 4,
+  SALUD_MENTAL: 5,
+  RECOMENDACION: 6,
+  RESPUESTAS: 7,
+};
+
+export const STEPS_WITH_ICON = new Set([
+  STEPS.PROBLEMAS,
+  STEPS.CONDICIONES,
+  STEPS.SALUD_MENTAL,
+]);
+
 export const PROGRESS_MAP = [0, 18, 36, 54, 72, 90, 100];
 
 export const ANIMATION = {

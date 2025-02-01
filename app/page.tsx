@@ -1,4 +1,4 @@
-import Stepper from "./components/Stepper";
+import ChoizForm from "./components/ChoizForm";
 import { fetchFaqs } from "./lib/faqs";
 
 const Choiz = async () => {
@@ -7,7 +7,7 @@ const Choiz = async () => {
   return (
     <main className="bg-gray-50 min-h-screen flex justify-center items-center w-full max-w-sm mx-auto">
       <div className="w-full flex flex-col justify-center items-center">
-        <Stepper faqs={faqs} />
+        <ChoizForm faqs={faqs} />
       </div>
     </main>
   );

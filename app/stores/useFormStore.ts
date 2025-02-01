@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
-import { MEDICATIONS, OTRO } from "../utils/constants";
-import { isOtroSelected } from "../utils/helpers";
+import { isOtroSelected, isStepWithIcon } from "../utils/helpers";
+import { MEDICATIONS, OTRO, STEPS } from "../utils/constants";
 import { FormState } from "../types";
 
 export const useFormStore = create<FormState>((set) => ({
@@ -14,15 +14,18 @@ export const useFormStore = create<FormState>((set) => ({
   setRecommendation: (reco) => set({ recommendation: reco }),
   nextStep: () =>
     set((state) => {
-      if (state.step === 2 && isOtroSelected(state.answers[2])) {
-        const updatedAnswers = state.answers[2].map((answer) =>
+      if (
+        state.step === STEPS.PROBLEMAS &&
+        isOtroSelected(state.answers[STEPS.PROBLEMAS])
+      ) {
+        const updatedAnswers = state.answers[STEPS.PROBLEMAS].map((answer) =>
           answer.startsWith(OTRO) ? `Otro: ${state.manualReason}` : answer
         );
         return {
           step: state.step + 1,
           answers: {
             ...state.answers,
-            2: updatedAnswers,
+            [STEPS.PROBLEMAS]: updatedAnswers,
           },
         };
       }
@@ -42,7 +45,7 @@ export const useFormStore = create<FormState>((set) => ({
         };
       }
 
-      if ([2, 4, 5].includes(step)) {
+      if (isStepWithIcon(step)) {
         if (answer.startsWith("No")) {
           return {
             answers: {
@@ -51,7 +54,9 @@ export const useFormStore = create<FormState>((set) => ({
             },
             manualReason: "",
             recommendation:
-              step === 4 ? MEDICATIONS.DUTCAPS : state.recommendation,
+              step === STEPS.CONDICIONES
+                ? MEDICATIONS.DUTCAPS
+                : state.recommendation,
           };
         } else {
           const updatedAnswers = currentAnswers.filter(
@@ -70,7 +75,7 @@ export const useFormStore = create<FormState>((set) => ({
           }
 
           let recommendation = state.recommendation;
-          if (step === 4) {
+          if (step === STEPS.CONDICIONES) {
             if (newAnswers.some((a) => a.includes("Cáncer"))) {
               recommendation = MEDICATIONS.MINCAPS;
             } else if (newAnswers.some((a) => !a.startsWith("No"))) {

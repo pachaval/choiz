@@ -1,4 +1,4 @@
-import { MEDICATION_DETAIL, OTRO } from "./constants";
+import { MEDICATION_DETAIL, OTRO, STEPS_WITH_ICON } from "./constants";
 
 export function isOtroSelected(answers: string[]): boolean {
   return answers?.some((answer) => answer.startsWith(OTRO));
@@ -18,3 +18,5 @@ export function getMedication(recommendation: string) {
 
   return medication;
 }
+
+export const isStepWithIcon = (step: number) => STEPS_WITH_ICON.has(step);

@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import clsx from "clsx";
 
+import { isOtroSelected, isStepWithIcon } from "../utils/helpers";
+import { ANIMATION, OTRO, STEPS } from "../utils/constants";
 import { useFormStore } from "../stores/useFormStore";
-import { ANIMATION, OTRO } from "../utils/constants";
-import { isOtroSelected } from "../utils/helpers";
 import { MultiChoiceProps } from "../types";
 import OtherInput from "./OtherInput";
 
@@ -17,7 +17,6 @@ const MultiChoice: React.FC<MultiChoiceProps> = ({
   step,
 }) => {
   const { answers, setAnswer } = useFormStore();
-  const isStepWithIcon = [2, 4, 5].includes(step);
 
   return (
     <div className="text-left mb-4">
@@ -44,7 +43,7 @@ const MultiChoice: React.FC<MultiChoiceProps> = ({
               exit={ANIMATION.exit}
               key={option}
             >
-              {isStepWithIcon &&
+              {isStepWithIcon(step) &&
                 (isSelected ? (
                   <Image
                     src="assets/icons/checked.svg"
@@ -66,7 +65,9 @@ const MultiChoice: React.FC<MultiChoiceProps> = ({
         })}
       </div>
 
-      {step === 2 && isOtroSelected(answers[step]) && <OtherInput />}
+      {step === STEPS.PROBLEMAS && isOtroSelected(answers[step]) && (
+        <OtherInput />
+      )}
     </div>
   );
 };
