@@ -17,7 +17,7 @@ const Stepper: React.FC<FaqsProps> = ({ faqs }) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  }, [step]);
 
   const isNextDisabled =
     !answers[step] ||
