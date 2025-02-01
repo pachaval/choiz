@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { useFormStore } from "../stores/useFormStore";
 import { STEPS_DATA } from "../utils/constants";
 
 const Success: React.FC = () => {
   const { answers } = useFormStore();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="flex flex-col">
@@ -14,12 +18,8 @@ const Success: React.FC = () => {
           const stepAnswers = answers[step];
           return (
             <div key={step}>
-              <p className="success-question">
-                {header}
-              </p>
-              <p className="success-answer">
-                {stepAnswers.join(", ")}{" "}
-              </p>
+              <p className="success-question">{header}</p>
+              <p className="success-answer">{stepAnswers.join(", ")} </p>
             </div>
           );
         })}
