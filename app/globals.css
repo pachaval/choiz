@@ -75,15 +75,4 @@
   .success-question {
     @apply font-bold leading-[25px] text-left;
   }
-
-  /* WELCOMEMODAL */
-  .welcome-bottomsheet {
-    @apply min-h-[45vh] bg-white rounded-t-3xl shadow-lg p-7 flex flex-col text-left relative -mt-6;
-  }
-  .welcome-bg {
-    @apply min-h-[60vh] overflow-hidden relative bg-[#6042AA];
-  }
-  .welcome-bg-img {
-    @apply object-cover scale-[1.8] object-[center_-60px];
-  }
 }
