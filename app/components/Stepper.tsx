@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 
 import { OTRO, STEPS, STEPS_DATA } from "../utils/constants";
 import { useFormStore } from "../stores/useFormStore";
@@ -19,12 +19,15 @@ const Stepper: React.FC<FaqsProps> = ({ faqs }) => {
     window.scrollTo(0, 0);
   }, [step]);
 
-  const isNextDisabled =
-    !answers[step] ||
-    answers[step].length === 0 ||
-    (step === STEPS.PROBLEMAS &&
-      answers[step]?.includes(OTRO) &&
-      !manualReason.trim());
+  const isNextDisabled = useMemo(
+    () =>
+      !answers[step] ||
+      answers[step].length === 0 ||
+      (step === STEPS.PROBLEMAS &&
+        answers[step]?.includes(OTRO) &&
+        !manualReason.trim()),
+    [step, answers, manualReason]
+  );
 
   if (step === STEPS.RESPUESTAS) {
     return (

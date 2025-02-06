@@ -1,17 +1,20 @@
+import React, { useMemo } from "react";
 import Image from "next/image";
-import React from "react";
 
 import { useFormStore } from "../stores/useFormStore";
 import { PROGRESS_MAP } from "../utils/constants";
 import { NavBarProps } from "../types";
 
-const NavBar: React.FC<NavBarProps> = ({ bgColor = "white" }) => {
-  const { step, prevStep } = useFormStore();
-  const progressWidth = PROGRESS_MAP[step - 1];
+const NavBar: React.FC<NavBarProps> = React.memo(({ bgColor = "white" }) => {
+  const prevStep = useFormStore((state) => state.prevStep);
+  const step = useFormStore((state) => state.step);
+
+  const progressWidth = useMemo(() => PROGRESS_MAP[step - 1], [step]);
 
   return (
     <div
-      className={`fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-sm px-4 py-3 z-10 bg-${bgColor}`}
+      className={`fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-sm px-4 py-3 z-10`}
+      style={{ backgroundColor: bgColor }}
     >
       <div className="navbar-container">
         <Image
@@ -27,12 +30,14 @@ const NavBar: React.FC<NavBarProps> = ({ bgColor = "white" }) => {
           alt="Choiz Icon"
           width={70}
           height={70}
+          priority
         />
         <Image
           src="assets/icons/whatsapp.svg"
           alt="Whatsapp Icon"
           width={22}
           height={22}
+          priority
         />
       </div>
       <div className="progress-bar-container">
@@ -43,6 +48,8 @@ const NavBar: React.FC<NavBarProps> = ({ bgColor = "white" }) => {
       </div>
     </div>
   );
-};
+});
+
+NavBar.displayName = "NavBar";
 
 export default NavBar;
